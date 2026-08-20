@@ -107,10 +107,9 @@
       color: var(--text);
       letter-spacing: -0.005em;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       min-width: 0;
     }
+    .brand-short { display: none; }
     .brand::before {
       content: "";
       display: inline-block;
@@ -140,9 +139,12 @@
       .nav-links { gap: 0.85rem; }
       .brand { font-size: 1.05rem; }
     }
+    @media (max-width: 480px) {
+      .brand-full { display: none; }
+      .brand-short { display: inline; }
+    }
     @media (max-width: 400px) {
       .nav-links { gap: 0.6rem; font-size: 0.85rem; }
-      .brand { max-width: 40vw; }
     }
 
     /* ---------- Hero ---------- */
@@ -548,7 +550,7 @@
   <!-- ---------- NAV ---------- -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="index.html" class="brand">Aryaman Kaprekar</a>
+      <a href="index.html" class="brand"><span class="brand-full">Aryaman Kaprekar</span><span class="brand-short">A. Kaprekar</span></a>
       <div class="nav-links">
         <a href="index.html" class="active">home</a>
         <a href="work.html">work</a>

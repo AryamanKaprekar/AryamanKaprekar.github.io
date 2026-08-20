@@ -107,10 +107,9 @@
       color: var(--text);
       letter-spacing: -0.005em;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       min-width: 0;
     }
+    .brand-short { display: none; }
     .brand::before {
       content: "";
       display: inline-block;
@@ -140,9 +139,12 @@
       .nav-links { gap: 0.85rem; }
       .brand { font-size: 1.05rem; }
     }
+    @media (max-width: 480px) {
+      .brand-full { display: none; }
+      .brand-short { display: inline; }
+    }
     @media (max-width: 400px) {
       .nav-links { gap: 0.6rem; font-size: 0.85rem; }
-      .brand { max-width: 40vw; }
     }
 
     /* ---------- Hero ---------- */
@@ -448,6 +450,12 @@
       display: block;
       border: 1px solid var(--rule);
       filter: grayscale(8%) contrast(1.04) brightness(0.9);
+      cursor: zoom-in;
+      transition: filter 0.18s ease;
+    }
+    .res-carousel-slide img:hover,
+    .res-carousel-slide img:focus-visible {
+      filter: grayscale(0%) contrast(1.04) brightness(0.98);
     }
     .res-carousel-label {
       font-family: var(--font-body);
@@ -1095,7 +1103,7 @@
   <!-- ---------- NAV ---------- -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="index.html" class="brand">Aryaman Kaprekar</a>
+      <a href="index.html" class="brand"><span class="brand-full">Aryaman Kaprekar</span><span class="brand-short">A. Kaprekar</span></a>
       <div class="nav-links">
         <a href="index.html">home</a>
         <a href="work.html" class="active">work</a>
@@ -1144,19 +1152,19 @@
                 <div class="res-carousel-inner">
                   <div class="res-carousel-track" id="dg-carousel-track">
                     <div class="res-carousel-slide">
-                      <img src="E2E_AD_model.png" alt="End to End Deep Learning AD model" />
+                      <img src="E2E_AD_model.png" alt="End to End Deep Learning AD model" class="res-carousel-img" tabindex="0" role="button" aria-label="Enlarge image: End to End Deep Learning AD Model" />
                       <span class="res-carousel-label">End 2 End Deep Learning AD Model</span>
                     </div>
                     <div class="res-carousel-slide">
-                      <img src="4-pillar_AD.png" alt="Traditional 4 pillar stack" />
+                      <img src="4-pillar_AD.png" alt="Traditional 4 pillar stack" class="res-carousel-img" tabindex="0" role="button" aria-label="Enlarge image: Traditional 4 Pillar Stack" />
                       <span class="res-carousel-label">Traditional 4 Pillar Stack</span>
                     </div>
                     <div class="res-carousel-slide">
-                      <img src="Simulator.png" alt="CARLA simulator testing" />
+                      <img src="Simulator.png" alt="CARLA simulator testing" class="res-carousel-img" tabindex="0" role="button" aria-label="Enlarge image: CARLA Simulator Testing" />
                       <span class="res-carousel-label">CARLA Simulator Testing</span>
                     </div>
                     <div class="res-carousel-slide">
-                      <img src="L2+_model.png" alt="AD0 with L2+ model" />
+                      <img src="L2+_model.png" alt="AD0 with L2+ model" class="res-carousel-img" tabindex="0" role="button" aria-label="Enlarge image: AD0 with L2+ Model" />
                       <span class="res-carousel-label">AD0 with L2+ Model</span>
                     </div>
                   </div>
@@ -1190,15 +1198,15 @@
                 <div class="res-carousel-inner">
                   <div class="res-carousel-track" id="mahe-carousel-track">
                     <div class="res-carousel-slide">
-                      <img src="Regional_XAI.png" alt="Dual Score Regional XAI" />
+                      <img src="Regional_XAI.png" alt="Dual Score Regional XAI" class="res-carousel-img" tabindex="0" role="button" aria-label="Enlarge image: Dual Score Regional XAI" />
                       <span class="res-carousel-label">Dual Score Regional XAI</span>
                     </div>
                     <div class="res-carousel-slide">
-                      <img src="Trustnet.png" alt="TrustNet XAI Uncertainty Quantifications" />
+                      <img src="Trustnet.png" alt="TrustNet XAI Uncertainty Quantifications" class="res-carousel-img" tabindex="0" role="button" aria-label="Enlarge image: TrustNet XAI Uncertainty Quantifications" />
                       <span class="res-carousel-label">TrustNet XAI Uncertainty Quantifications</span>
                     </div>
                     <div class="res-carousel-slide">
-                      <img src="us_cad.png" alt="CAD Approaches for Ultrasound" />
+                      <img src="us_cad.png" alt="CAD Approaches for Ultrasound" class="res-carousel-img" tabindex="0" role="button" aria-label="Enlarge image: CAD Approaches for Ultrasound" />
                       <span class="res-carousel-label">CAD Approaches for Ultrasound</span>
                     </div>
                   </div>
@@ -1548,7 +1556,7 @@
       var lightbox = document.getElementById('lightbox');
       var lightboxImg = document.getElementById('lightbox-img');
       var closeBtn = lightbox.querySelector('.lightbox-close');
-      var images = document.querySelectorAll('.carousel-card-img');
+      var images = document.querySelectorAll('.carousel-card-img, .res-carousel-img');
 
       function open(img) {
         lightboxImg.src = img.src;
