@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aryaman Kaprekar — AI Engineer</title>
-  <meta name="description" content="AI engineer working across autonomous vehicles, medical computer vision, and edge deployment." />
+  <title>Aryaman Kaprekar — CPS Engineer</title>
+  <meta name="description" content="CPS engineer working across autonomous vehicles, medical computer vision, and edge deployment." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -94,6 +94,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 1rem;
       padding: 1rem var(--pad);
       max-width: var(--maxw);
       margin: 0 auto;
@@ -105,6 +106,10 @@
       font-size: 1.25rem;
       color: var(--text);
       letter-spacing: -0.005em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
     }
     .brand::before {
       content: "";
@@ -125,11 +130,19 @@
       font-weight: 500;
       color: var(--text);
       letter-spacing: 0.01em;
+      flex-shrink: 0;
     }
     .nav-links a { transition: color 0.18s ease; }
     .nav-links a:hover { color: var(--accent); }
+    .nav-links a.active { color: var(--accent); }
     @media (max-width: 640px) {
-      .nav-links { display: none; }
+      .nav-inner { padding: 0.85rem 1.25rem; }
+      .nav-links { gap: 0.85rem; }
+      .brand { font-size: 1.05rem; }
+    }
+    @media (max-width: 400px) {
+      .nav-links { gap: 0.6rem; font-size: 0.85rem; }
+      .brand { max-width: 40vw; }
     }
 
     /* ---------- Hero ---------- */
@@ -214,6 +227,7 @@
       line-height: 1.08;
       letter-spacing: -0.02em;
       margin: 0 0 1.5rem;
+      color: var(--accent);
     }
     .hero h1 .accent {
       color: var(--accent);
@@ -236,6 +250,12 @@
       flex-wrap: wrap;
       gap: 0.75rem;
       align-items: center;
+    }
+    .hero-updated {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text);
+      margin: 1rem 0 0;
     }
     .btn {
       display: inline-flex;
@@ -308,550 +328,134 @@
       font-variation-settings: "opsz" 96, "SOFT" 100;
     }
 
-    /* ---------- About ---------- */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-    @media (max-width: 780px) { .about-grid { grid-template-columns: 1fr; gap: 2rem; } }
-    .about-lead {
-      font-family: var(--font-display);
-      font-size: clamp(1.2rem, 1.7vw, 1.5rem);
-      font-weight: 400;
-      font-variation-settings: "opsz" 48;
-      line-height: 1.45;
-      color: var(--text);
-      letter-spacing: -0.005em;
-      text-align: justify;
-      hyphens: auto;
-    }
-    .about-lead::first-letter {
-      color: var(--accent);
-    }
-    .about-body p {
+    /* ---------- Current Affairs ---------- */
+    .affairs-intro {
       color: var(--text-dim);
-      margin: 0 0 1rem;
       font-size: 0.98rem;
+      max-width: 68ch;
+      margin: 0 0 2.25rem;
       text-align: justify;
       hyphens: auto;
     }
-    .about-body p:last-child { margin-bottom: 0; }
-    .about-body strong { color: var(--text); font-weight: 500; }
-
-    /* ---------- Experience ---------- */
-    .exp-item {
+    .affairs-grid {
       display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 2rem;
-      padding: 2rem 0;
-      border-top: 1px solid var(--rule);
-      position: relative;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
     }
-    .exp-item:first-of-type { border-top: none; padding-top: 0; }
-    @media (max-width: 720px) {
-      .exp-item { grid-template-columns: 1fr; gap: 0.75rem; padding: 1.5rem 0; }
-    }
-    .exp-meta {
-      font-family: var(--font-body);
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--text-dim);
-      letter-spacing: 0.02em;
-    }
-    .exp-meta .active {
-      color: var(--accent);
-    }
-    .exp-role {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 500;
-      font-variation-settings: "opsz" 24;
-      margin: 0 0 0.25rem;
-      letter-spacing: -0.01em;
-      line-height: 1.2;
-    }
-    .exp-org {
-      font-size: 0.95rem;
-      color: var(--text-dim);
-      margin: 0 0 1rem;
-    }
-    .exp-org a { border-bottom: 1px solid var(--rule-strong); transition: border-color 0.18s; }
-    .exp-org a:hover { border-color: var(--accent); color: var(--accent); }
-    .exp-desc {
-      color: var(--text-dim);
-      font-size: 0.94rem;
-      margin: 0;
-      text-align: justify;
-      hyphens: auto;
-    }
-    .exp-desc ul {
-      margin: 0;
-      padding-left: 0;
-      list-style: none;
-    }
-    .exp-desc li {
-      padding-left: 1.25rem;
-      position: relative;
-      margin-bottom: 0.5rem;
-    }
-    .exp-desc li::before {
-      content: "→";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-family: var(--font-mono);
-    }
-
-    /* ---------- Research image carousel ---------- */
-    .res-carousel {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-top: 1.5rem;
-    }
-    .res-carousel-inner {
-      flex: 1;
-      overflow: hidden;
-    }
-    .res-carousel-track {
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: 100%;
-      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .res-carousel-slide {
+    .affair-card {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-left: 2px solid var(--cool);
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-      overflow: hidden;
     }
-    .res-carousel-slide img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border: 1px solid var(--rule);
-      filter: grayscale(8%) contrast(1.04) brightness(0.9);
-    }
-    .res-carousel-label {
+    .affair-num {
       font-family: var(--font-body);
-      font-size: 0.92rem;
-      font-weight: 500;
-      color: var(--text);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      text-align: center;
-      background: var(--surface);
-      border: 1px solid var(--rule-strong);
-      padding: 0.45rem 0.75rem;
-      width: 100%;
-    }
-    .res-carousel-btn {
-      flex-shrink: 0;
-      width: 42px;
-      height: 42px;
-      background: var(--surface);
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.18s ease;
-      font-family: var(--font-mono);
-    }
-    .res-carousel-btn:hover { background: var(--accent); color: var(--bg); }
-
-    /* ---------- Work / Projects ---------- */
-    .work-groups {
-      display: grid;
-      gap: 2.5rem;
-    }
-    .work-group-title {
-      font-family: var(--font-body);
-      font-size: 0.88rem;
+      font-size: 0.75rem;
       font-weight: 600;
       color: var(--cool);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      margin-bottom: 1.25rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px dashed var(--rule-strong);
-    }
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
-    }
-    .work-card {
-      background: var(--surface);
-      border: 1px solid var(--rule);
-      padding: 1.5rem;
-      transition: all 0.2s ease;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-    }
-    .work-card:hover {
-      border-color: var(--rule-strong);
-      transform: translateY(-2px);
-    }
-    .work-card h3 {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 500;
-      font-variation-settings: "opsz" 24;
-      margin: 0 0 0.5rem;
-      letter-spacing: -0.005em;
-      line-height: 1.25;
-    }
-    .work-card p {
-      color: var(--text-dim);
-      font-size: 0.9rem;
-      margin: 0 0 1rem;
-      flex: 1;
-      text-align: justify;
-      hyphens: auto;
-    }
-    .work-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-    .tag {
-      font-family: var(--font-body);
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--text-dim);
-      padding: 0.2rem 0.5rem;
-      border: 1px solid var(--rule);
-      letter-spacing: 0.01em;
-    }
-    .tag.hot { color: var(--accent); border-color: var(--accent-dim); background: var(--accent-dim); }
-
-    /* ---------- Carousel ---------- */
-    .carousel-wrap {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-    }
-    .carousel-viewport {
-      flex: 1;
-      overflow: hidden;
-    }
-    .carousel-track {
-      display: flex;
-      transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .carousel-card {
-      min-width: 100%;
-      background: var(--surface);
-      border: 1px solid var(--rule);
-      display: flex;
-      flex-direction: column;
-      box-sizing: border-box;
-      overflow: hidden;
-    }
-    .carousel-card-img {
-      width: 40%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      filter: grayscale(10%) contrast(1.05) brightness(0.88);
-      border-top: 1px solid var(--rule);
-      padding: 1rem 0 0.5rem;
-    }
-    .carousel-card-body {
-      padding: clamp(1.5rem, 3vw, 2.5rem);
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .carousel-context {
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    .carousel-card h3 {
-      font-family: var(--font-display);
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      font-weight: 500;
-      font-variation-settings: "opsz" 48;
-      margin: 0;
-      letter-spacing: -0.015em;
-      line-height: 1.2;
-    }
-    .carousel-card p {
-      color: var(--text-dim);
-      font-size: 0.97rem;
-      margin: 0;
-      line-height: 1.6;
-      max-width: 64ch;
-      text-align: justify;
-      hyphens: auto;
-    }
-    .carousel-btn {
-      flex-shrink: 0;
-      width: 52px;
-      height: 52px;
-      background: var(--surface);
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      font-size: 1.3rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.18s ease;
-      font-family: var(--font-mono);
-      flex-direction: column;
-    }
-    .carousel-btn:hover { background: var(--accent); color: var(--bg); }
-    .carousel-btn:disabled { opacity: 0.2; pointer-events: none; border-color: var(--rule-strong); color: var(--text-muted); }
-    .carousel-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 1rem;
-    }
-    .carousel-counter {
-      font-family: var(--font-mono);
-      font-size: 0.88rem;
-      color: var(--text-dim);
       letter-spacing: 0.08em;
-    }
-    .carousel-dots {
       display: flex;
-      gap: 0.45rem;
       align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
     }
-    .carousel-dot {
-      width: 7px;
-      height: 7px;
+    .affair-num .pulse-dot {
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: var(--text-muted);
-      transition: background 0.2s, transform 0.2s;
-      cursor: pointer;
+      background: var(--cool);
+      box-shadow: 0 0 8px var(--cool);
+      animation: pulse 2.5s ease-in-out infinite;
     }
-    .carousel-dot.active {
-      background: var(--accent);
-      transform: scale(1.5);
-    }
-
-    /* ---------- Publications ---------- */
-    .pub-list {
-      display: grid;
-      gap: 0;
-    }
-    .pub {
-      padding: 1.5rem 0;
-      border-top: 1px solid var(--rule);
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 1.5rem;
-      align-items: start;
-    }
-    .pub:first-child { border-top: none; padding-top: 0; }
-    @media (max-width: 720px) { .pub { grid-template-columns: 1fr; gap: 0.5rem; } }
-    .pub-num {
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-dim);
-    }
-    .pub-body h3 {
+    .affair-card h3 {
       font-family: var(--font-display);
+      font-size: 1.15rem;
       font-weight: 500;
       font-variation-settings: "opsz" 24;
-      font-size: 1.1rem;
-      margin: 0 0 0.4rem;
-      line-height: 1.35;
+      margin: 0 0 0.6rem;
       letter-spacing: -0.005em;
+      line-height: 1.3;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-wrap: wrap;
     }
-    .pub-body .pub-venue {
-      font-size: 0.9rem;
-      color: var(--text-dim);
-      font-family: var(--font-body);
-      font-style: italic;
-    }
-    .pub-body .pub-role {
-      display: inline-block;
+    .active-tag {
       font-family: var(--font-mono);
-      font-size: 0.68rem;
+      font-size: 0.62rem;
+      font-weight: 600;
       color: var(--cool);
       background: var(--cool-dim);
-      padding: 0.15rem 0.45rem;
-      margin-left: 0.5rem;
-      letter-spacing: 0.05em;
+      border: 1px solid var(--cool);
+      padding: 0.18rem 0.5rem;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
+      border-radius: 3px;
     }
-    .pub-link {
-      font-family: var(--font-body);
+    .affair-teaser {
+      color: var(--text-dim);
       font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--accent);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      align-self: center;
-      white-space: nowrap;
-    }
-    .pub-link:hover { text-decoration: underline; }
-
-    /* ---------- Skills ---------- */
-    .skills-forte {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-    }
-    .forte-tag {
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      color: var(--text);
-      background: var(--surface);
-      border: 1px solid var(--rule-strong);
-      padding: 0.4rem 0.9rem;
-    }
-    .skills-boxes {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-    .skill-box {
-      background: var(--surface);
-      border: 1px solid var(--rule);
-      flex: 1 1 200px;
-    }
-    .skill-box details { width: 100%; }
-    .skill-box details summary {
-      list-style: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.85rem 1rem;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.18s;
-    }
-    .skill-box details summary::-webkit-details-marker { display: none; }
-    .skill-box details[open] summary {
-      border-bottom-color: var(--rule);
-    }
-    .skill-box details summary h4 {
-      font-family: var(--font-body);
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
       margin: 0;
+      line-height: 1.55;
+      flex: 1;
+      text-align: justify;
+      hyphens: auto;
     }
-    .skill-box details summary::after {
-      content: "▸";
-      font-family: var(--font-mono);
-      font-size: 1rem;
-      color: var(--accent);
-      line-height: 1;
-      border: none;
-      padding: 0;
-      background: transparent;
-      letter-spacing: 0;
-      text-transform: none;
-      transition: transform 0.2s ease;
-    }
-    .skill-box details summary:hover::after {
-      background: transparent;
-      color: var(--accent);
-    }
-    .skill-box details[open] summary::after {
-      content: "▾";
-    }
-    .skill-box .details-body {
-      padding: 0.85rem 1rem;
-    }
-    .skill-box ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    .affair-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem;
+      margin-top: 1rem;
     }
-    .skill-box li {
-      font-family: var(--font-body);
-      font-size: 0.82rem;
-      color: var(--text-dim);
-      background: var(--bg);
-      border: 1px solid var(--rule);
-      padding: 0.25rem 0.65rem;
-    }
-    .precision-line {
-      margin-top: 2.5rem;
-      padding: 1rem 1.25rem;
-      background: var(--surface);
-      border: 1px solid var(--rule);
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .precision-line .label {
-      color: var(--text-muted);
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-    }
-    .precision-line .prec {
-      color: var(--text);
-    }
-    .precision-line .prec .arrow { color: var(--accent); margin: 0 0.35rem; }
 
-    /* ---------- Extras ---------- */
-    .extras {
+    /* ---------- Index ---------- */
+    .index-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
     }
-    .extra {
-      padding: 1.25rem;
+    @media (max-width: 780px) { .index-grid { grid-template-columns: 1fr; } }
+    .index-pillar {
+      display: flex;
+      flex-direction: column;
       background: var(--surface);
       border: 1px solid var(--rule);
+      padding: 1.75rem;
+      transition: all 0.2s ease;
     }
-    .extra .extra-label {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.4rem;
+    .index-pillar:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
     }
-    .extra h4 {
+    .index-pillar h3 {
       font-family: var(--font-display);
-      font-size: 1.05rem;
+      font-size: 1.4rem;
       font-weight: 500;
       font-variation-settings: "opsz" 24;
-      margin: 0 0 0.4rem;
-      line-height: 1.25;
+      margin: 0 0 1rem;
+      letter-spacing: -0.005em;
+      color: var(--text);
     }
-    .extra p {
-      font-size: 0.85rem;
+    .index-pillar ul {
+      list-style: none;
+      margin: 0 0 1.25rem;
+      padding: 0;
+      flex: 1;
+    }
+    .index-pillar li {
+      font-size: 0.92rem;
       color: var(--text-dim);
-      margin: 0;
-      text-align: justify;
-      hyphens: auto;
+      padding: 0.5rem 0;
+      border-top: 1px solid var(--rule);
+    }
+    .index-pillar li:first-child { border-top: none; }
+    .index-link {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
     }
 
     /* ---------- Contact / Footer ---------- */
@@ -921,47 +525,6 @@
       gap: 1rem;
     }
 
-    /* ---------- Dropdowns ---------- */
-    details { width: 100%; }
-    details summary {
-      list-style: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-    details summary::-webkit-details-marker { display: none; }
-    details summary::after {
-      content: "+";
-      font-family: var(--font-mono);
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: var(--accent);
-      border: 1px solid var(--accent);
-      width: 2rem;
-      height: 2rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-      flex-shrink: 0;
-      transition: background 0.18s ease, color 0.18s ease;
-    }
-    details summary:hover::after {
-      background: var(--accent);
-      color: var(--bg);
-    }
-    details[open] summary::after {
-      content: "−";
-    }
-    details summary .section-title {
-      margin: 0;
-    }
-    details .details-body {
-      padding-top: 2rem;
-    }
-
     /* ---------- Reduced motion ---------- */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
@@ -971,6 +534,13 @@
       }
       html { scroll-behavior: auto; }
     }
+
+    /* Justified text reads badly with rivers of whitespace on narrow columns */
+    @media (max-width: 640px) {
+      .hero-sub, .affairs-intro, .affair-teaser {
+        text-align: left;
+      }
+    }
   </style>
 </head>
 <body>
@@ -978,15 +548,12 @@
   <!-- ---------- NAV ---------- -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="#top" class="brand">Aryaman Kaprekar</a>
+      <a href="index.html" class="brand">Aryaman Kaprekar</a>
       <div class="nav-links">
-        <a href="#about">about</a>
-        <a href="#experience">experience</a>
-        <a href="#publications">publications</a>
-        <a href="#skills">skills</a>
-        <a href="#work">work</a>
-        <a href="#me">me</a>
-        <a href="#contact">contact</a>
+        <a href="index.html" class="active">home</a>
+        <a href="work.html">work</a>
+        <a href="about.html">about</a>
+        <a href="Aryaman_Resume.pdf" target="_blank" rel="noopener">resume</a>
       </div>
     </div>
   </nav>
@@ -997,15 +564,16 @@
     <section class="hero">
       <div class="hero-layout">
         <div class="hero-text">
-          <h1>Aryaman Kaprekar<br /><span class="accent">AI Research Engineer</span></h1>
+          <h1>Aryaman Kaprekar<br /></h1>
           <p class="hero-sub">
-            My driving interest is <strong>research and development at the frontier of AI</strong> — understanding why models work, where they break, and how to push the boundary.
-            That curiosity has taken me through published literature, end-to-end projects, and bridging the gap between a paper and its real-world implementation.
+            My driving interest is <strong>research and engineering at the frontier of intelligent systems</strong>, understanding how they work, where they break, and how to push the boundary.
+            The world around me raises questions, and I’m compelled to seek the answers.
           </p>
           <div class="cta-row">
             <a href="https://github.com/AryamanKaprekar" target="_blank" rel="noopener" class="btn">GitHub ↗</a>
             <a href="https://linkedin.com/in/aryaman-kaprekar-513846248/" target="_blank" rel="noopener" class="btn">LinkedIn ↗</a>
           </div>
+          <p class="hero-updated">Last updated: Aug 16, 2026</p>
         </div>
         <div class="hero-portrait-wrap">
           <img src="portrait.png" alt="Aryaman Kaprekar" class="hero-portrait" />
@@ -1013,398 +581,74 @@
       </div>
     </section>
 
-    <!-- ---------- ABOUT ---------- -->
-    <section id="about" class="block">
-      <div class="eyebrow">01 / About</div>
-      <h2 class="section-title">Deep learning, <span class="em">applied.</span></h2>
-      <p class="about-lead">
-        Deep learning is the core of what I do — with a bias toward the parts of the field where models meet real constraints. Quantization, edge deployment, lightweight architectures, and the engineering between a research paper and something you can actually run.
+    <!-- ---------- CURRENT AFFAIRS ---------- -->
+    <section id="affairs" class="block">
+      <div class="eyebrow">01 / Currently...</div>
+      <h2 class="section-title">Ongoing <span class="em">Investigations</span></h2>
+      <p class="affairs-intro">
+        Four open questions I'm working through right now, part reading, part prototyping. Let me know if you have any insights, or want to collaborate on any of these.
       </p>
-      <details>
-        <summary>Some More</summary>
-        <div class="details-body">
-          <div class="about-body">
-            <p>
-              My work spans three areas. <strong>Autonomous vehicles</strong> is the domain I'm most drawn to and where most of my industry experience sits. <strong>Medical computer vision</strong> is where I've done my published research. <strong>Edge deployment</strong> — quantization, custom operators, C++ inference — is the thread that runs through both.
-            </p>
-            <p>
-              Most recently I was an <strong>ADAS Engineer at DeepGrid Semi</strong> (promoted from AI Intern), leading model deployment across three autonomous driving programs. I ported end-to-end models like AD (Autonomous driving) model from research code to ONNX → TensorRT FP16 → C++, validated precision from FP32 down to INT8, and built custom CUDA operators and TensorRT plugins.
-            </p>
-            <p>
-              Alongside that, I was a <strong>Research Fellow at MAHE's Advanced Healthcare Lab</strong> with three publications in Nature Scientific Reports and Elsevier's Informatics in Medicine Unlocked — on lightweight networks, uncertainty quantification, and explainable AI for medical imaging.
-            </p>
-            <p>
-              B.Tech Hons. Cyber Physical Systems, <strong>Manipal Institute of Technology</strong>, with a minor specialization in Computational Intelligence. CGPA 8.69.
-            </p>
-          </div>
-        </div>
-      </details>
-    </section>
 
-    <!-- ---------- EXPERIENCE ---------- -->
-    <section id="experience" class="block">
-      <div class="eyebrow">02 / Experience</div>
-      <h2 class="section-title">Where I've <span class="em">worked.</span></h2>
+      <div class="affairs-grid">
 
-      <div class="exp-item">
-        <div class="exp-meta">
-          May 2025 — Jul 2026<br />
-          Hyderabad, IN
-        </div>
-        <div>
-          <h3 class="exp-role">AI Intern → ADAS Engineer</h3>
-          <details>
-            <summary> DeepGrid Semi Pvt Ltd · T-Hub, Hyderabad </summary>
-            <div class="details-body">
-              <div class="exp-desc">
-                <ul>
-                  <li>Led the AI team — overseeing research direction, task allocation, and technical decisions across three autonomous driving programs (AD0, AD1, AD2).</li>
-                  <li>Drove AI research end-to-end, from paper reproduction to edge deployment on hardware accelerators.</li>
-                  <li>Deployed end to end SOTA autonomous driving models across the full stack: PyTorch-only port, ONNX, TensorRT, C++ inference, and live real-world sensor integration (LiDAR, RGB, IR, GPS, IMU).</li>
-                  <li>Built custom CUDA operators, TensorRT plugins and ran model optimisation experiments like quantisation, knowledge distillation and pruning.</li>
-                  <li>Ran open-loop evaluations on Cityscapes, NuScenes, NuPlan, IDD, and Waymo; and closed-loop simulations on Carla and Navsim.</li>
-                  <li>Represented DeepGrid at the AI Impact Summit, interviews, and to visiting delegations and investors.</li>
-                </ul>
-              </div>
-              <div class="res-carousel" id="dg-carousel">
-                <button class="res-carousel-btn dg-carousel-btn--prev" aria-label="Previous">&#8592;</button>
-                <div class="res-carousel-inner">
-                  <div class="res-carousel-track" id="dg-carousel-track">
-                    <div class="res-carousel-slide">
-                      <img src="E2E_AD_model.png" alt="End to End Deep Learning AD model" />
-                      <span class="res-carousel-label">End 2 End Deep Learning AD Model</span>
-                    </div>
-                    <div class="res-carousel-slide">
-                      <img src="4-pillar_AD.png" alt="Traditional 4 pillar stack" />
-                      <span class="res-carousel-label">Traditional 4 Pillar Stack</span>
-                    </div>
-                    <div class="res-carousel-slide">
-                      <img src="Simulator.png" alt="CARLA simulator testing" />
-                      <span class="res-carousel-label">CARLA Simulator Testing</span>
-                    </div>
-                    <div class="res-carousel-slide">
-                      <img src="L2+_model.png" alt="AD0 with L2+ model" />
-                      <span class="res-carousel-label">AD0 with L2+ Model</span>
-                    </div>
-                  </div>
-                </div>
-                <button class="res-carousel-btn dg-carousel-btn--next" aria-label="Next">&#8594;</button>
-              </div>
-            </div>
-          </details>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-meta">
-          Dec 2024 — Jul 2026<br />
-          Manipal, IN
-        </div>
-        <div>
-          <h3 class="exp-role">Research Fellow</h3>
-          <details>
-            <summary>Advanced Healthcare Lab, MAHE · Manipal, IN</summary>
-            <div class="details-body">
-              <div class="exp-desc">
-                <ul>
-                  <li>Co-author on peer-reviewed work in cardiac ultrasound and CT imaging — systematic review of LVH detection, and TrustNet (uncertainty-quantified ischemic stroke detection).</li>
-                  <li>Lead author on a multi-level attention CNN-Transformer framework for brain tumor diagnosis with regional dual-score explainability.</li>
-                  <li>Focus areas: lightweight architectures, uncertainty quantification, quantitative explainable AI.</li>
-                </ul>
-              </div>
-              <div class="res-carousel">
-                <button class="res-carousel-btn res-carousel-btn--prev" aria-label="Previous">&#8592;</button>
-                <div class="res-carousel-inner">
-                  <div class="res-carousel-track" id="mahe-carousel-track">
-                    <div class="res-carousel-slide">
-                      <img src="Regional_XAI.png" alt="Dual Score Regional XAI" />
-                      <span class="res-carousel-label">Dual Score Regional XAI</span>
-                    </div>
-                    <div class="res-carousel-slide">
-                      <img src="Trustnet.png" alt="TrustNet XAI Uncertainty Quantifications" />
-                      <span class="res-carousel-label">TrustNet XAI Uncertainty Quantifications</span>
-                    </div>
-                    <div class="res-carousel-slide">
-                      <img src="us_cad.png" alt="CAD Approaches for Ultrasound" />
-                      <span class="res-carousel-label">CAD Approaches for Ultrasound</span>
-                    </div>
-                  </div>
-                </div>
-                <button class="res-carousel-btn res-carousel-btn--next" aria-label="Next">&#8594;</button>
-              </div>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- ---------- PUBLICATIONS ---------- -->
-    <section id="publications" class="block">
-      <div class="eyebrow">03 / Publications</div>
-      <h2 class="section-title">Peer-reviewed <span class="em">Literature.</span></h2>
-      <div class="pub-list">
-
-        <div class="pub">
-          <div class="pub-num">P.01</div>
-          <div class="pub-body">
-            <h3>
-              Regional Dual-Score Explainability: A Multi-Level Attention CNN-Transformer Framework for Brain-Tumor Diagnosis
-              <span class="pub-role">Author</span>
-            </h3>
-            <div class="pub-venue">Nature Scientific Reports (Springer) · 2026</div>
-          </div>
-          <a class="pub-link" href="https://www.nature.com/articles/s41598-026-52658-6" target="_blank" rel="noopener">Read ↗</a>
+        <div class="affair-card">
+          <div class="affair-num"><span class="pulse-dot"></span>01</div>
+          <h3>VLA <span class="active-tag">Active</span></h3>
+          <p class="affair-teaser">Understanding the recent hype around Nvidia Alpamayo 2, and seeing how those architectures can be implemented on edge with real-time inference.</p>
         </div>
 
-        <div class="pub">
-          <div class="pub-num">P.02</div>
-          <div class="pub-body">
-            <h3>
-              TrustNet: A Lightweight Network with Integrated Uncertainty Quantification and Quantitative Explainable AI for Ischemic Stroke Detection in CT Images
-              <span class="pub-role">Co-author</span>
-            </h3>
-            <div class="pub-venue">Nature Scientific Reports (Springer) · 2026</div>
-          </div>
-          <a class="pub-link" href="https://www.doi.org/10.1038/s41598-026-37169-8" target="_blank" rel="noopener">Read ↗</a>
+        <div class="affair-card">
+          <div class="affair-num"><span class="pulse-dot"></span>02</div>
+          <h3>World Models <span class="active-tag">Active</span></h3>
+          <p class="affair-teaser">Attempting to solve the industry issue of limited data for Indian roads against unlimited real-world scenarios. Can world models create all the hypothetical ones?</p>
         </div>
 
-        <div class="pub">
-          <div class="pub-num">P.03</div>
-          <div class="pub-body">
-            <h3>
-              Automated Identification of Left Ventricular Hypertrophy using Cardiac Ultrasound Imaging: A Systematic Review of AI-Driven Approaches
-              <span class="pub-role">Co-author</span>
-            </h3>
-            <div class="pub-venue">Elsevier · Informatics in Medicine Unlocked · 2025</div>
-          </div>
-          <a class="pub-link" href="https://www.sciencedirect.com/science/article/pii/S2352914825001194" target="_blank" rel="noopener">Read ↗</a>
+        <div class="affair-card">
+          <div class="affair-num"><span class="pulse-dot"></span>03</div>
+          <h3>Post-training RL Policies</h3>
+          <p class="affair-teaser">Resolving the gap between simulator performance and real-world driving, currently reading Sutton &amp; Barto's "Reinforcement Learning: An Introduction". Models should know the consequences of their decisions; maybe RL and world models can help there.</p>
+        </div>
+
+        <div class="affair-card">
+          <div class="affair-num"><span class="pulse-dot"></span>04</div>
+          <h3>Ternary Bit Ops</h3>
+          <p class="affair-teaser">Ternary LLMs have arrived, but can they be implemented on complex computer vision models? Also Finding or building a ternary simulator for deep learning on a regular PC.</p>
         </div>
 
       </div>
     </section>
 
-    <!-- ---------- SKILLS ---------- -->
-    <section id="skills" class="block">
-      <div class="eyebrow">04 / Stack</div>
-      <h2 class="section-title">Skills & <span class="em">Tools.</span></h2>
+    <!-- ---------- INDEX ---------- -->
+    <section id="index" class="block">
+      <div class="eyebrow">02 / Elsewhere on this site</div>
+      <h2 class="section-title">Read <span class="em">further.</span></h2>
 
-      <div class="skills-forte">
-        <span class="forte-tag">Deep Learning</span>
-        <span class="forte-tag">Computer Vision</span>
-        <span class="forte-tag">Model Optimisation</span>
-        <span class="forte-tag">Reinforcement Learning</span>
-        <span class="forte-tag">Internet of Things</span>
-        <span class="forte-tag">Digital Image Processing</span>
-        <span class="forte-tag">Computer Organisation and Architecture</span>
-        <span class="forte-tag">Computer Networks</span>
-        <span class="forte-tag">Technical Generalist</span>
+      <div class="index-grid">
+
+        <a href="work.html" class="index-pillar">
+          <h3>Work</h3>
+          <ul>
+            <li>Experience</li>
+            <li>Publications</li>
+            <li>Selected Projects</li>
+            <li>Skills</li>
+            <li>How I Work</li>
+          </ul>
+          <span class="index-link">Go to Work ↗</span>
+        </a>
+
+        <a href="about.html" class="index-pillar">
+          <h3>About</h3>
+          <ul>
+            <li>Motivation</li>
+            <li>Off the clock</li>
+            <li>Education</li>
+            <li>Cultural Exposure</li>
+          </ul>
+          <span class="index-link">Go to About ↗</span>
+        </a>
+
       </div>
-
-      <div class="skills-boxes">
-        <div class="skill-box">
-          <details>
-            <summary><h4>Languages</h4></summary>
-            <div class="details-body">
-              <ul>
-                <li>Python</li>
-                <li>C++</li>
-                <li>C</li>
-                <li>Embedded C</li>
-              </ul>
-            </div>
-          </details>
-        </div>
-        <div class="skill-box">
-          <details>
-            <summary><h4>Frameworks</h4></summary>
-            <div class="details-body">
-              <ul>
-                <li>PyTorch</li>
-                <li>ONNX</li>
-                <li>TensorRT</li>
-                <li>Git</li>
-                <li>Linux</li>
-                <li>CUDA</li>
-                <li>MATLAB</li>
-                <li>OpenCV</li>
-                <li>MLFlow</li>
-                <li>DVC</li>
-                <li>Docker</li>
-                <li>CMake</li>
-                <li>Numpy</li>
-                <li>Pandas</li>
-              </ul>
-            </div>
-          </details>
-        </div>
-        <div class="skill-box">
-          <details>
-            <summary><h4>Niche stack</h4></summary>
-            <div class="details-body">
-              <ul>
-                <li>Custom CUDA Ops</li>
-                <li>TensorRT Plugins</li>
-                <li>CARLA</li>
-                <li>Navsim</li>
-                <li>Bench2Drive</li>
-                <li>RK NPU toolkit</li>
-                <li>Voyager SDK</li>
-                <li>OpenMMLab</li>
-                <li>Precisions (fp32, fp16, bf16, fp8 (E4M3 / E5M2), int8, nvfp4, ternary)</li>
-              </ul>
-            </div>
-          </details>
-        </div>
-        <div class="skill-box">
-          <details>
-            <summary><h4>Certifications</h4></summary>
-            <div class="details-body">
-              <ul>
-                <li>NPTEL — Deep Learning for Visual Computing (Top 5%)</li>
-                <li>NPTEL — Digital Image Processing (Top 5%)</li>
-                <li>NPTEL — Intro to Internet of Things (Top 5%)</li>
-                <li>NPTEL — Research Methodology (Top 5%)</li>
-                <li>NPTEL — Intro to LLMs</li>
-                <li>Coursera — Deep Learning Specialization</li>
-                <li>Coursera — GAN Networks</li>
-                <li>Coursera — Smart Cities</li>
-              </ul>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- ---------- WORK ---------- -->
-    <section id="work" class="block">
-      <div class="eyebrow">05 / Selected Projects</div>
-      <h2 class="section-title">Things I've <span class="em">tinkered with.</span></h2>
-
-      <div class="carousel-wrap">
-        <button class="carousel-btn carousel-btn--prev" aria-label="Previous project">&#8592;</button>
-        <div class="carousel-viewport">
-          <div class="carousel-track">
-
-            <div class="carousel-card">
-              <div class="carousel-card-body">
-                <div class="carousel-context">Reinforcement Learning · Control Systems</div>
-                <h3>RL-based Batch Reactor Controller</h3>
-                <p>Reinforcement learning agent for temperature regulation in a batch chemical reactor. Used Policy Mirror Descent algorithm with Temporal Difference learning for coolant flow and heater current regulation.</p>
-              </div>
-              <img src="batch_reactor.png" class="carousel-card-img" alt="Batch reactor controller" />
-            </div>
-
-            <div class="carousel-card">
-              <div class="carousel-card-body">
-                <div class="carousel-context">Qualcomm Vision X · IIT Bombay · Finalist</div>
-                <h3>Generative Models for Reflection Removal</h3>
-                <p>Evaluated Autoencoder and GAN-based pipelines for single-image reflection removal. Achieved 89.77% mAP. Finalist at the Qualcomm Vision X Competition at IIT Bombay.</p>
-              </div>
-              <img src="reflection.png" class="carousel-card-img" alt="Reflection removal output" />
-            </div>
-
-            <div class="carousel-card">
-              <div class="carousel-card-body">
-                <div class="carousel-context">Amazon ML Challenge</div>
-                <h3>Multimodal AI: Consumer Product Cost Prediction</h3>
-                <p>End-to-end price prediction on Amazon grocery products. Fused Resnet50 visual embeddings with Distil-BERT text embeddings via an MLP fusion layer into an XGBoost regressor; SMAPE of 47.5 on the evaluation set.</p>
-              </div>
-              <img src="amazon.png" class="carousel-card-img" alt="Amazon ML Challenge" />
-            </div>
-
-            <div class="carousel-card">
-              <div class="carousel-card-body">
-                <div class="carousel-context">MLOps · Learning Project</div>
-                <h3>End-to-end MLOps Pipeline</h3>
-                <p>Production-grade ML pipeline covering experiment tracking with MLFlow, data versioning with DVC, Docker containerisation, and Git-based CI/CD. Fully reproducible from raw data to deployed model.</p>
-              </div>
-              <img src="mlops.png" class="carousel-card-img" alt="MLOps pipeline" />
-            </div>
-
-            <div class="carousel-card">
-              <div class="carousel-card-body">
-                <div class="carousel-context">IoT · Cloud · Cyber Physical Systems</div>
-                <h3>SmartRover — Cloud-Controlled Obstacle Detection Vehicle</h3>
-                <p>Cloud-controlled rover with real-time obstacle detection via IR sensors. Built on Arduino Uno + BoltIoT Wi-Fi module with a motor driver circuit.</p>
-              </div>
-              <img src="cloud_bot.png" class="carousel-card-img" alt="Cloud bot" />
-            </div>
-
-            <div class="carousel-card">
-              <div class="carousel-card-body">
-                <div class="carousel-context">IoT · Embedded Systems · MIT Campus</div>
-                <h3>Smart Soil Monitoring System (S-SMS)</h3>
-                <p>Small-scale system to emulate farm fields and agricultural practices in a controlled space. Monitors NPK (nitrogen, phosphorus, potassium), moisture, and light intensity. Rainwater harvesting incorporated for water supply. Deployed across five soil types on the MIT campus (sandy, garden, grass, swampy, silica) and cross-referenced against ICAR soil classifications to recommend suitable crops.</p>
-              </div>
-              <img src="soil.jpg" class="carousel-card-img" alt="Soil monitoring system" />
-            </div>
-
-          </div>
-        </div>
-        <button class="carousel-btn carousel-btn--next" aria-label="Next project">&#8594;</button>
-      </div>
-
-      <div class="carousel-footer">
-        <span class="carousel-counter">01 / 06</span>
-        <div class="carousel-dots">
-          <span class="carousel-dot active"></span>
-          <span class="carousel-dot"></span>
-          <span class="carousel-dot"></span>
-          <span class="carousel-dot"></span>
-          <span class="carousel-dot"></span>
-          <span class="carousel-dot"></span>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- ---------- EXTRAS ---------- -->
-    <section id="me" class="block">
-      <div class="eyebrow">06 / Off the clock</div>
-      <details>
-        <summary><h2 class="section-title">Life beyond <span class="em">the terminal.</span></h2></summary>
-        <div class="details-body">
-          <div class="extras">
-
-            <div class="extra">
-              <div class="extra-label">Competition · IIT-B</div>
-              <h4>Qualcomm Vision X Finalist</h4>
-              <p>Finalists for the GAN-based reflection removal project at the Qualcomm Vision X Competition, IIT Bombay.</p>
-            </div>
-
-            <div class="extra">
-              <div class="extra-label">Workshops</div>
-              <h4>Bolt-IoT &amp; IIT-B</h4>
-              <p>Completed IoT and ML training at Bolt-IoT, and Gesture Robotics at IIT Bombay.</p>
-            </div>
-
-            <div class="extra">
-              <div class="extra-label">Service</div>
-              <h4>NCC Cadet</h4>
-              <p>Regimental training and social service with the National Cadet Corps.</p>
-            </div>
-
-            <div class="extra">
-              <div class="extra-label">Trek · 5,364 m</div>
-              <h4>Everest Base Camp</h4>
-              <p>Completed the EBC trek at 5,364 m, along with several other Himalayan treks.</p>
-            </div>
-
-            <div class="extra">
-              <div class="extra-label">Leadership</div>
-              <h4>CR · Team Lead · AI Lead</h4>
-              <p>Class Representative for my batch. Team lead across multiple college group projects. AI Team Lead at DeepGrid Semi.</p>
-            </div>
-
-            <div class="extra">
-              <div class="extra-label">Hobbies</div>
-              <h4>Guitar, Sketching, Football, Adventure, Travel</h4>
-              <p>Guitar and sketching for the quiet hours. Football, adventure, and travel whenever there's a reason to move.</p>
-            </div>
-
-          </div>
-        </div>
-      </details>
     </section>
 
   </div>
@@ -1428,67 +672,5 @@
     <span>Built with intent · India</span>
   </footer>
 
-  <script>
-    (function () {
-      var track = document.querySelector('.carousel-track');
-      var cards = track.querySelectorAll('.carousel-card');
-      var counter = document.querySelector('.carousel-counter');
-      var dots = document.querySelectorAll('.carousel-dot');
-      var total = cards.length;
-      var current = 0;
-
-      function goTo(index) {
-        current = ((index % total) + total) % total;
-        track.style.transform = 'translateX(-' + (current * 100) + '%)';
-        counter.textContent =
-          String(current + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
-        dots.forEach(function (d, i) {
-          d.classList.toggle('active', i === current);
-        });
-      }
-
-      document.querySelector('.carousel-btn--prev').addEventListener('click', function () { goTo(current - 1); });
-      document.querySelector('.carousel-btn--next').addEventListener('click', function () { goTo(current + 1); });
-      dots.forEach(function (d, i) {
-        d.addEventListener('click', function () { goTo(i); });
-      });
-
-      goTo(0);
-    })();
-
-    (function () {
-      var track = document.getElementById('mahe-carousel-track');
-      var slides = track.querySelectorAll('.res-carousel-slide');
-      var total = slides.length;
-      var current = 0;
-
-      function goTo(index) {
-        current = ((index % total) + total) % total;
-        track.style.transform = 'translateX(-' + (current * 100) + '%)';
-      }
-
-      document.querySelector('.res-carousel-btn--prev').addEventListener('click', function () { goTo(current - 1); });
-      document.querySelector('.res-carousel-btn--next').addEventListener('click', function () { goTo(current + 1); });
-
-      goTo(0);
-    })();
-
-    (function () {
-      var track = document.getElementById('dg-carousel-track');
-      var slides = track.querySelectorAll('.res-carousel-slide');
-      var total = slides.length;
-      var current = 0;
-
-      function goTo(index) {
-        current = ((index % total) + total) % total;
-        track.style.transform = 'translateX(-' + (current * 100) + '%)';
-      }
-
-      document.querySelector('.dg-carousel-btn--prev').addEventListener('click', function () { goTo(current - 1); });
-      document.querySelector('.dg-carousel-btn--next').addEventListener('click', function () { goTo(current + 1); });
-
-      goTo(0);
-    })();
-  </script>
 </body>
 </html>
