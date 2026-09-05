@@ -668,6 +668,17 @@
       text-align: justify;
       hyphens: auto;
     }
+    .carousel-link {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      align-self: flex-start;
+    }
+    .carousel-link:hover { text-decoration: underline; }
     .carousel-btn {
       flex-shrink: 0;
       width: 52px;
@@ -781,6 +792,12 @@
       letter-spacing: 0.05em;
       text-transform: uppercase;
     }
+    .pub-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      align-self: center;
+    }
     .pub-link {
       font-family: var(--font-body);
       font-size: 0.9rem;
@@ -789,9 +806,9 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      align-self: center;
       white-space: nowrap;
     }
+    .pub-link.secondary { color: var(--cool); }
     .pub-link:hover { text-decoration: underline; }
 
     /* ---------- Skills ---------- */
@@ -1246,7 +1263,10 @@
             </h3>
             <div class="pub-venue">Nature Scientific Reports (Springer) · 2026</div>
           </div>
-          <a class="pub-link" href="https://www.nature.com/articles/s41598-026-52658-6" target="_blank" rel="noopener">Read ↗</a>
+          <div class="pub-links">
+            <a class="pub-link" href="https://www.nature.com/articles/s41598-026-52658-6" target="_blank" rel="noopener">Read ↗</a>
+            <a class="pub-link secondary" href="https://github.com/AryamanKaprekar/Dual_Score_Regional_XAI_MLHnet" target="_blank" rel="noopener">Code ↗</a>
+          </div>
         </div>
 
         <div class="pub">
@@ -1258,7 +1278,10 @@
             </h3>
             <div class="pub-venue">Nature Scientific Reports (Springer) · 2026</div>
           </div>
-          <a class="pub-link" href="https://www.doi.org/10.1038/s41598-026-37169-8" target="_blank" rel="noopener">Read ↗</a>
+          <div class="pub-links">
+            <a class="pub-link" href="https://www.doi.org/10.1038/s41598-026-37169-8" target="_blank" rel="noopener">Read ↗</a>
+            <a class="pub-link secondary" href="https://github.com/AryamanKaprekar/Ischemic-Stroke-Classification-TrustNet" target="_blank" rel="noopener">Code ↗</a>
+          </div>
         </div>
 
         <div class="pub">
@@ -1291,6 +1314,7 @@
                 <div class="carousel-context">Reinforcement Learning · Control Systems · 2025</div>
                 <h3>RL-based Batch Reactor Controller</h3>
                 <p>RL agent for temperature regulation in a batch chemical reactor, using Policy Mirror Descent and Temporal Difference learning for coolant and heater current control.</p>
+                <a class="carousel-link" href="https://github.com/AryamanKaprekar/RL_BatchReactor" target="_blank" rel="noopener">Code ↗</a>
               </div>
               <img src="batch_reactor.png" class="carousel-card-img" alt="Batch reactor controller" tabindex="0" role="button" aria-label="Enlarge image: Batch reactor controller" />
             </div>
@@ -1300,6 +1324,7 @@
                 <div class="carousel-context">Computer Vision · Segmentation · 2025</div>
                 <h3>Road-Scene Segmentation</h3>
                 <p>Literature review on segmentation; lightweight hybrid GAN model achieving 63% mIoU / 72% mPA on Cityscapes with only 11.3M params.</p>
+                <a class="carousel-link" href="https://github.com/AryamanKaprekar/HybridGAN" target="_blank" rel="noopener">Code ↗</a>
               </div>
               <img src="road_scene_seg.png" class="carousel-card-img" alt="Road-scene segmentation output" tabindex="0" role="button" aria-label="Enlarge image: Road-scene segmentation output" />
             </div>
@@ -1309,6 +1334,7 @@
                 <div class="carousel-context">Qualcomm Vision X · IIT Bombay · Finalist · 2024</div>
                 <h3>Generative Models for Reflection Removal</h3>
                 <p>Autoencoder/GAN pipelines for single-image reflection removal; 89.77% mAP on a custom dataset.</p>
+                <a class="carousel-link" href="https://github.com/AryamanKaprekar/reflection_removal" target="_blank" rel="noopener">Code ↗</a>
               </div>
               <img src="reflection.png" class="carousel-card-img" alt="Reflection removal output" tabindex="0" role="button" aria-label="Enlarge image: Reflection removal output" />
             </div>
@@ -1327,6 +1353,7 @@
                 <div class="carousel-context">MLOps · Learning Project · 2025</div>
                 <h3>End-to-end MLOps Pipeline</h3>
                 <p>Production-grade pipeline with MLFlow, DVC, Docker, and Git-based CI/CD, fully reproducible from raw data to deployed model.</p>
+                <a class="carousel-link" href="https://github.com/AryamanKaprekar/Cost_Prediction_MLOPS" target="_blank" rel="noopener">Code ↗</a>
               </div>
               <img src="mlops.png" class="carousel-card-img" alt="MLOps pipeline" tabindex="0" role="button" aria-label="Enlarge image: MLOps pipeline" />
             </div>
@@ -1336,6 +1363,7 @@
                 <div class="carousel-context">IoT · Embedded Systems · MIT Campus · 2023</div>
                 <h3>Smart Soil Monitoring System (S-SMS)</h3>
                 <p>Small-scale system to emulate farm fields and agricultural practices in a controlled space. Monitors NPK (nitrogen, phosphorus, potassium), moisture, and light intensity. Rainwater harvesting incorporated for water supply. Deployed across five soil types on the MIT campus (sandy, garden, grass, swampy, silica) and cross-referenced against ICAR soil classifications to recommend suitable crops.</p>
+                <a class="carousel-link" href="https://github.com/AryamanKaprekar/Sustainable_Soil_Monitoring_System" target="_blank" rel="noopener">Code ↗</a>
               </div>
               <img src="soil.jpg" class="carousel-card-img" alt="Soil monitoring system" tabindex="0" role="button" aria-label="Enlarge image: Soil monitoring system" />
             </div>
