@@ -670,15 +670,23 @@
     }
     .carousel-link {
       font-family: var(--font-body);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 500;
       color: var(--accent);
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
       align-self: flex-start;
+      border: 1px solid var(--accent-dim);
+      padding: 0.4rem 0.8rem;
+      transition: all 0.18s ease;
     }
-    .carousel-link:hover { text-decoration: underline; }
+    .carousel-link:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg);
+      transform: translateY(-1px);
+    }
     .carousel-btn {
       flex-shrink: 0;
       width: 52px;
@@ -800,16 +808,26 @@
     }
     .pub-link {
       font-family: var(--font-body);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 500;
       color: var(--accent);
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.35rem;
       white-space: nowrap;
+      border: 1px solid var(--accent-dim);
+      padding: 0.4rem 0.8rem;
+      transition: all 0.18s ease;
     }
-    .pub-link.secondary { color: var(--cool); }
-    .pub-link:hover { text-decoration: underline; }
+    .pub-link:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg);
+      transform: translateY(-1px);
+    }
+    .pub-link.secondary { color: var(--cool); border-color: var(--cool-dim); }
+    .pub-link.secondary:hover { background: var(--cool); border-color: var(--cool); color: var(--bg); }
 
     /* ---------- Skills ---------- */
     .skills-forte {
