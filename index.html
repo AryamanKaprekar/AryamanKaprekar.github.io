@@ -395,6 +395,18 @@
       text-transform: uppercase;
       border-radius: 3px;
     }
+    .team-tag {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      padding: 0.18rem 0.5rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 3px;
+    }
     .affair-teaser {
       color: var(--text-dim);
       font-size: 0.9rem;
@@ -587,33 +599,33 @@
       <div class="eyebrow">01 / Currently...</div>
       <h2 class="section-title">Ongoing <span class="em">Investigations</span></h2>
       <p class="affairs-intro">
-        Four open questions I'm working through right now: part reading, part prototyping. I'd love to hear your thoughts or explore them together.
+        Four open projects and questions I'm working through right now: part reading, part prototyping. I'd love to hear your thoughts or explore them together.
       </p>
 
       <div class="affairs-grid">
 
         <div class="affair-card">
           <div class="affair-num"><span class="pulse-dot"></span>01</div>
-          <h3>VLA <span class="active-tag">Active</span></h3>
-          <p class="affair-teaser">Understanding the recent hype around Nvidia Alpamayo 2, and seeing how those architectures can be implemented on edge with real-time inference.</p>
+          <h3>Autonomous Racing Simulator <span class="active-tag">Active</span> <span class="team-tag">Team</span></h3>
+          <p class="affair-teaser">Building a lightweight, physics-realistic multi-agent simulator to train, validate, and benchmark RL and DL algorithms for autonomous racing. Currently in V1, being built from the ground up.</p>
         </div>
 
         <div class="affair-card">
           <div class="affair-num"><span class="pulse-dot"></span>02</div>
-          <h3>World Models <span class="active-tag">Active</span></h3>
-          <p class="affair-teaser">Attempting to solve the industry issue of limited data for Indian roads against unlimited real-world scenarios. Can world models create all the hypothetical ones?</p>
+          <h3>VLA</h3>
+          <p class="affair-teaser">Understanding the recent hype around Nvidia Alpamayo 2, and seeing how those architectures can be implemented on edge with real-time inference.</p>
         </div>
 
         <div class="affair-card">
           <div class="affair-num"><span class="pulse-dot"></span>03</div>
-          <h3>Post-training RL Policies</h3>
-          <p class="affair-teaser">Resolving the gap between simulator performance and real-world driving, currently reading Sutton &amp; Barto's "Reinforcement Learning: An Introduction". Models should know the consequences of their decisions; maybe RL and world models can help there.</p>
+          <h3>World Models</h3>
+          <p class="affair-teaser">Attempting to solve the industry issue of limited data for Indian roads against unlimited real-world scenarios. Can world models create all the hypothetical ones?</p>
         </div>
 
         <div class="affair-card">
           <div class="affair-num"><span class="pulse-dot"></span>04</div>
-          <h3>Ternary Bit Ops</h3>
-          <p class="affair-teaser">Ternary LLMs have arrived, but can they be implemented on complex computer vision models? Also Finding or building a ternary simulator for deep learning on a regular PC.</p>
+          <h3>Post-training RL Policies <span class="active-tag">Active</span></h3>
+          <p class="affair-teaser">Resolving the gap between simulator performance and real-world driving, currently reading Sutton &amp; Barto's "Reinforcement Learning: An Introduction". Models should know the consequences of their decisions; maybe RL and world models can help there.</p>
         </div>
 
       </div>
