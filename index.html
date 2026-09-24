@@ -164,34 +164,17 @@
     .hero-portrait-wrap {
       flex-shrink: 0;
       width: clamp(160px, 20vw, 280px);
+      aspect-ratio: 1 / 1;
       position: relative;
-    }
-    .hero-portrait-wrap::before {
-      content: "";
-      position: absolute;
-      top: -8px;
-      left: -8px;
-      width: 28px;
-      height: 28px;
-      border-top: 2px solid var(--accent);
-      border-left: 2px solid var(--accent);
-      opacity: 0.55;
-      pointer-events: none;
-      z-index: 2;
-    }
-    .hero-portrait-wrap::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 65%, var(--bg) 97%);
-      pointer-events: none;
-      z-index: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--rule-strong);
     }
     .hero-portrait {
       width: 100%;
+      height: 100%;
       display: block;
-      object-fit: contain;
-      filter: grayscale(18%) sepia(12%) contrast(1.07) brightness(0.88);
+      object-fit: cover;
     }
     @media (max-width: 780px) {
       .hero-layout { flex-direction: column-reverse; align-items: flex-start; }
